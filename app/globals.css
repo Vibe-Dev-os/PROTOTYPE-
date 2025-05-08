@@ -1,0 +1,228 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 260 30% 4%;
+    --foreground: 260 20% 98%;
+
+    --card: 260 30% 7%;
+    --card-foreground: 260 20% 98%;
+
+    --popover: 260 30% 4%;
+    --popover-foreground: 260 20% 98%;
+
+    --primary: 267 75% 65%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 260 30% 10%;
+    --secondary-foreground: 260 20% 98%;
+
+    --muted: 260 30% 10%;
+    --muted-foreground: 260 20% 75%;
+
+    --accent: 267 75% 20%;
+    --accent-foreground: 260 20% 98%;
+
+    --destructive: 0 62.8% 40.6%;
+    --destructive-foreground: 260 20% 98%;
+
+    --border: 260 30% 15%;
+    --input: 260 30% 15%;
+    --ring: 267 75% 65%;
+
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Force dark mode styles */
+html {
+  color-scheme: dark;
+  background-color: hsl(260, 30%, 4%);
+}
+
+body {
+  background-color: hsl(260, 30%, 4%);
+  color: hsl(260, 20%, 98%);
+}
+
+/* Add violet accents */
+.bg-accent-violet {
+  background-color: hsl(267, 75%, 20%);
+}
+
+.text-accent-violet {
+  color: hsl(267, 75%, 65%);
+}
+
+.border-accent-violet {
+  border-color: hsl(267, 75%, 45%);
+}
+
+/* Add violet gradient backgrounds */
+.bg-violet-gradient {
+  background: linear-gradient(135deg, hsl(260, 30%, 7%) 0%, hsl(267, 75%, 20%) 100%);
+}
+
+.bg-card-gradient {
+  background: linear-gradient(to bottom, hsl(260, 30%, 7%) 0%, hsl(260, 30%, 4%) 100%);
+}
+
+/* Replace the existing violet-glow class with this more subtle version */
+.violet-glow {
+  box-shadow: 0 0 8px rgba(170, 85, 255, 0.15);
+}
+
+.violet-glow:hover {
+  box-shadow: 0 0 12px rgba(170, 85, 255, 0.25);
+}
+
+.violet-glow-text {
+  text-shadow: 0 0 5px rgba(170, 85, 255, 0.3);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0e0a1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3a1f7a;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #aa55ff;
+}
+
+/* Card styles for consistent heights */
+.card-equal-height {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.card-equal-height .card-body {
+  flex: 1 1 auto;
+}
+
+.card-equal-height .card-footer {
+  margin-top: auto;
+}
+
+/* Add this at the end of the file to support extra small screens */
+@layer utilities {
+  @variants responsive {
+    .xs\:inline {
+      display: inline;
+    }
+    .xs\:grid-cols-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .xs\:hidden {
+      display: none;
+    }
+    .xs\:flex-row {
+      flex-direction: row;
+    }
+  }
+}
+
+/* Add responsive styles for the card flipping in games */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* Make sure the flashcard game is responsive */
+@media (max-width: 640px) {
+  .min-h-[300px] {
+    min-height: 200px;
+  }
+}
+
+/* Button hover effects */
+.btn-violet {
+  background-color: hsl(267, 75%, 65%);
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-violet:hover {
+  background-color: hsl(267, 75%, 70%);
+  transform: translateY(-2px);
+}
+
+.btn-violet:active {
+  transform: translateY(0);
+}
+
+/* Card hover effects */
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px -5px rgba(170, 85, 255, 0.3);
+}
+
+/* Input focus styles */
+.input-violet:focus {
+  border-color: hsl(267, 75%, 65%);
+  box-shadow: 0 0 0 2px rgba(170, 85, 255, 0.25);
+}
+
+/* Badge styles */
+.badge-violet {
+  background-color: hsl(267, 75%, 20%);
+  color: hsl(267, 75%, 85%);
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+/* Progress bar styles */
+.progress-violet::-webkit-progress-value {
+  background-color: hsl(267, 75%, 65%);
+}
+
+.progress-violet::-moz-progress-bar {
+  background-color: hsl(267, 75%, 65%);
+}
+
+/* Notification dot */
+.notification-dot {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 8px;
+  height: 8px;
+  background-color: hsl(267, 75%, 65%);
+  border-radius: 50%;
+}
